@@ -1,2 +1,4 @@
-# go.meta
-Small wrapper for go map type.
+go.meta
+===========
+
+ruby-like map for golang
