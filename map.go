@@ -41,15 +41,15 @@ func (source Map) Fetch(key string, options ...interface{}) (interface{}, error)
 	}
 	if len(options) > 0 {
 		for _, option := range options {
-			switch option.(type) {
+			switch option := option.(type) {
 			case func(key string) (interface{}, error):
-				newValue, err := option.(func(key string) (interface{}, error))(key)
+				newValue, err := option(key)
 				if err == nil {
 					source[key] = newValue
 					return newValue, nil
 				}
 			case func() (interface{}, error):
-				newValue, err := option.(func() (interface{}, error))()
+				newValue, err := option()
 				if err == nil {
 					source[key] = newValue
 					return newValue, nil
